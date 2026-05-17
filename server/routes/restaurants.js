@@ -4,7 +4,9 @@ import { createClient } from '@supabase/supabase-js'
 const router = Router()
 
 /* ── Supabase client ─────── */
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, {
+  realtime: { autoConnect: false },
+})
 
 router.get('/', async (_req, res) => {
   const { data, error } = await supabase
